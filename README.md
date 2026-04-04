@@ -1,70 +1,45 @@
 # 代码库分析技能集
 
-帮助开发者系统性地理解和分析任何代码库的 Claude Code 技能集合。
-
-## 项目介绍
-
-本仓库包含三个互联的 Claude Code 技能，用于生成结构化的代码库分析文档：
-
-### 1. 代码库全景分析 (codebase-overview)
-
-快速了解整个项目的全貌。生成包含架构图、技术栈、数据流、模块地图等完整分析文档。
-
-### 2. 模块深潜分析 (codebase-deep-dive)
-
-深入研究项目中的某个具体模块。生成详细的模块文档，包括 API 接口、内部设计、依赖关系等。
-
-### 3. 超级设计 (super-design)
-
-使用 Superpowers 技能系统编排完整的开发工作流程，集成 UI/UX 设计考虑。
+帮助开发者快速理解代码库、组织开发流程的 Claude Code 技能集合。
 
 ## 安装
 
-使用 Claude Code 的技能管理工具安装此技能集：
+快速安装：
 
 ```bash
 npx skills add maxlee007/for-developer-skills
 ```
 
-安装后在 Claude Code 中即可使用这三个技能。
+## 代码库分析
 
-### 前置要求
+用来快速理解一个陌生的代码库。包含两个协作的技能：
 
-如果要使用 **super-design** 技能，还需要先安装以下依赖技能：
+- **codebase-overview** — 生成项目全景分析
+- **codebase-deep-dive** — 深入分析具体模块
 
-```bash
-npx skills add anthropics/superpowers
-npx skills add anthropics/ui-ux-pro-max-skill
-```
-
-codebase-overview 和 codebase-deep-dive 无需额外依赖。
-
-## 使用方式
-
-### 分析一个新项目
+### 使用方式
 
 1. 打开或下载一个代码库
-2. 在 Claude Code 中运行 **codebase-overview** 技能
-3. 技能会生成 `.code-insight/main.md` 文件，包含完整的项目分析
+2. 运行 **codebase-overview** 生成项目全景分析
+3. 根据需要运行 **codebase-deep-dive** 深入研究某个具体模块
 
-### 深入了解某个模块
+### 生成的文件
 
-1. 首先运行 codebase-overview（如果还没有运行）
-2. 在 Claude Code 中运行 **codebase-deep-dive** 技能
-3. 选择要分析的模块，获得详细的模块文档
+分析结果保存在 `.code-insight/` 目录中：
 
-### 完整工作流程
+- `main.md` — 项目全景分析，包含架构图、技术栈、数据流、模块地图
+- `[module-name].md` — 具体模块的详细分析，包含 API 接口、内部设计、依赖关系
 
-使用 **super-design** 技能组织完整的开发流程，包括设计、规划、执行等阶段。
+所有文档都包含 Mermaid 图表，支持架构图、数据流图、模块依赖图等可视化。
 
-## 输出文档
+## 开发工具
 
-所有分析结果保存在目标仓库的 `.code-insight/` 目录中：
+使用 **super-design** 组织完整的开发工作流程，集成 UI/UX 设计考虑。
 
-- `main.md` — 项目全景分析（由 codebase-overview 生成）
-- `[module-name].md` — 模块详细分析（由 codebase-deep-dive 生成）
+此工具依赖：
 
-文档包含 Mermaid 图表，支持架构图、数据流图、模块依赖图等可视化。
+- [superpowers](https://github.com/anthropics/superpowers)
+- [ui-ux-pro-max-skill](https://github.com/anthropics/ui-ux-pro-max-skill)
 
 ## 特点
 
