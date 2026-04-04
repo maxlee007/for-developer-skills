@@ -1,6 +1,7 @@
 ---
 name: super-design
 description: 项目启动基调 - Superpowers 全流程 + ui-ux-pro-max-skill UI/UX
+disable-model-invocation: true
 ---
 
 全局规则（必须严格遵守）：
