@@ -1,0 +1,30 @@
+# Claude Code
+.claude/settings.local.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 依赖
+node_modules/
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# 环境配置
+.env
+.env.local
+.env.*.local
+
+# 日志和临时文件
+*.log
+.tmp/
+dist/
+build/
