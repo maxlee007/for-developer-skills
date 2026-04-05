@@ -10,6 +10,7 @@ description: >
   此技能生成的文档存放在 `.code-insight/` 目录中，并自动更新 `main.md` 的链接和进度。
   前提条件：`.code-insight/main.md` 必须已经存在。如果不存在，提示用户先运行
   codebase-overview 技能。
+disable-model-invocation: true
 ---
 
 # 模块深入分析
