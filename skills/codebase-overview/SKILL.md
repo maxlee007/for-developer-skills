@@ -8,7 +8,6 @@ description: >
   "读一下这个代码"、"walk me through this project"、"what does this project do"、
   "analyze this repo"，或者用户刚下载/打开了一个项目想要快速了解全貌。
   此技能负责第一阶段——全局概览。深入研究某个具体模块请使用 module-deep-dive 技能。
-disable-model-invocation: true
 ---
 
 # 代码库全景分析
