@@ -8,7 +8,6 @@ description: >
   不要触发此技能，那是 codebase-overview 的职责。
   此技能从项目使用者（而非开发者）的视角出发，分析项目的使用价值、
   使用方式、适用场景，并进行竞品横向对比评分。
-disable-model-invocation: true
 ---
 
 # 项目使用者视角评估
