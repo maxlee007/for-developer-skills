@@ -31,6 +31,14 @@ cat > "${SETTINGS_FILE}" << 'JSON'
       "Bash(docker *)",
       "Bash(docker-compose *)",
       "Bash(docker compose *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(yarn *)",
+      "Bash(pnpm *)",
+      "Bash(pip *)",
+      "Bash(pip3 *)",
+      "Bash(poetry *)",
+      "Bash(uv *)",
 
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
@@ -44,7 +52,9 @@ cat > "${SETTINGS_FILE}" << 'JSON'
       "WebFetch(domain:stackoverflow.com)",
 
       "mcp__plugin_context7_context7",
-      "mcp__plugin_serena_serena"
+      "mcp__plugin_serena_serena",
+
+      "Skill(commit-commands:*)"
     ],
 
     "deny": [
@@ -66,7 +76,15 @@ cat > "${SETTINGS_FILE}" << 'JSON'
     },
     "excludedCommands": [
       "docker",
-      "git"
+      "git",
+      "npm",
+      "npx",
+      "yarn",
+      "pnpm",
+      "pip",
+      "pip3",
+      "poetry",
+      "uv"
     ]
   }
 }
