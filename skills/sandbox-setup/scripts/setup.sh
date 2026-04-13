@@ -39,6 +39,8 @@ cat > "${SETTINGS_FILE}" << 'JSON'
       "Bash(pip3 *)",
       "Bash(poetry *)",
       "Bash(uv *)",
+      "Bash(python *)",
+      "Base(python3 *)",
 
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
