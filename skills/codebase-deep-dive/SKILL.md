@@ -138,28 +138,30 @@ flowchart TD
 
 ### [函数/接口名]
 
+- **位置**: [filename.ts:42](relative/path/to/filename.ts#L42) ← **必填，不可省略**
 - **签名**: `functionName(param1: Type, param2: Type): ReturnType`
 - **作用**: [说明]
-- **调用方**: [谁在调用这个接口]
+- **调用方**: [调用方名称]([调用位置 file:line]) — 即调用方也必须带文件路径
 - **示例**:
 
 ` ` `typescript
-// 典型调用示例
+// [filename.ts:42-58](relative/path/to/filename.ts#L42-L58)
+// 真实代码片段，不要编造
 ` ` `
 
 ## 内部设计
 
 ### 数据结构
 
-[关键数据结构说明，配合代码片段]
+[关键数据结构说明。每个具名 type/class/struct/interface **必须**标注定义位置，例如 [User](src/models/user.ts#L12)、[NotifyEvent](src/types.ts#L88)]
 
 ### 设计模式
 
-[使用了什么模式，为什么选择这个模式]
+[使用了什么模式，为什么选择这个模式。涉及具体实现时，引用关键文件+行号]
 
 ### 错误处理
 
-[如何处理异常和边界情况]
+[如何处理异常和边界情况。提到具体错误类型/捕获点时，给出 file:line]
 
 ## 依赖关系
 
@@ -173,9 +175,9 @@ flowchart TD
 
 ## 文件清单
 
-| 文件              | 职责   | 行数 |
-| ----------------- | ------ | ---- |
-| `path/to/file.ts` | [简述] | ~N   |
+| 文件 | 职责 | 行数 |
+| ---- | ---- | ---- |
+| [file.ts](relative/path/to/file.ts) | [简述] | ~N |
 ```
 
 ### 复杂模块模板 — `.code-insight/[模块名]/main.md`
@@ -287,6 +289,51 @@ graph TB
 - 引用项目中的真实代码片段来说明关键 API 或模式，不要编造示例
 - 代码片段保持简短（10–30 行），需要更多上下文时给出完整文件路径
 - 使用项目实际使用的编程语言和代码风格
+- **每段代码块顶部必须用注释标出来源** — 例如 `// src/services/notify.ts:42-58`，让读者读到一半想去原地看时不需要重新搜索
+
+### 代码引用必须带文件路径（硬性规则）
+
+模块文档存在的核心价值是**让读者从"理解"到"动手"的延迟降到秒级**。如果只写"`NotifyService` 处理通知分发"，读者还要再花 3–5 分钟 grep 才能定位；写成 [`NotifyService`](src/services/notify.ts#L12) 就直接可点击跳转。
+
+#### 强制要求
+
+任何提到具名代码实体的地方（函数、方法、类、接口、type、struct、enum、关键常量、配置项、HTTP 路由、事件名、SQL 表名等），**第一次出现时必须挂上 markdown 链接到 file:line**，格式：
+
+`[实体名](相对路径#Lxx)` 或 `[实体名](相对路径#Lxx-Lyy)`
+
+应用范围：
+
+| 文档位置 | 必须带 file:line 的内容 |
+| -------- | ----------------------- |
+| API 接口 | 函数/方法本身、调用方位置、关键参数类型 |
+| 数据结构 | 每个具名 type / class / struct / interface |
+| 设计模式 | 实现该模式的核心文件与关键行 |
+| 错误处理 | 自定义错误类型的定义点、关键 catch/recover 点 |
+| 控制流文字描述 | 流程中提到的每个具名步骤函数 |
+| Mermaid 节点 | 节点对应的代码位置（写在节点 label 里或紧跟图后的注解列表中） |
+| 代码块 | 顶部注释标 `// file:line-line` |
+
+#### 例外
+
+- **第三方库 API**（如 `Array.prototype.map`、`fetch`、`React.useState`）不需要本地路径
+- **同一段落内重复提到的同一实体**：第一次贴路径，后续可省略
+- **真正抽象的概念**（如"事件总线模式"作为概念词）不需要路径，但具体实现的入口必须有
+
+#### 反模式 vs 合格示例
+
+> ❌ **不合格**：
+> "`NotifyService` 通过 `dispatch` 方法把事件分发给各个 channel handler。每个 handler 实现了 `Handler` 接口。失败时会通过 `RetryQueue` 重试。"
+>
+> 问题：读者要 grep 4 个名字（NotifyService、dispatch、Handler、RetryQueue）才能开始读源码。
+
+> ✅ **合格**：
+> "[`NotifyService`](src/services/notify.ts#L12) 通过 [`dispatch()`](src/services/notify.ts#L48) 方法把事件分发给各个 channel handler。每个 handler 实现了 [`Handler`](src/services/handlers/types.ts#L5) 接口。失败时会通过 [`RetryQueue`](src/services/retry-queue.ts#L20) 重试（重试逻辑见 [retry-queue.ts:55-92](src/services/retry-queue.ts#L55-L92)）。"
+>
+> 读者点任何一个链接就能直接跳到源码对应行。
+
+#### 自查方式
+
+写完一个章节后，扫一遍：每个粗体函数名、每段反引号包裹的标识符、每个具名概念，是否都有对应的可点击链接？没有的补上。
 
 ### 语气
 
