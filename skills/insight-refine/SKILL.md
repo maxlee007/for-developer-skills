@@ -7,7 +7,7 @@ description: >
   用户说"这里不太对"、"XX 是什么意思"、"为什么是这样"、
   "这个地方需要改一下"、"标签到底是指什么"、"帮我更新文档"、
   "把你的回答写到 md 里"、"这段描述有误"，
-  或者用户对 codebase-overview、module-deep-dive、project-evaluation
+  或者用户对 codebase-overview、codebase-deep-dive、project-evaluation
   生成的文档内容提出任何疑问或修改要求。
   注意：如果用户是要求从零生成新的分析文档，不要触发此技能——
   那是 codebase-overview、codebase-deep-dive 或 project-evaluation 的职责。
